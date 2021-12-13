@@ -381,6 +381,7 @@ TODO use different desing on small screens. List products one below the other wi
     padding-right: 20px;
 }
 
+
 /*btn*/
 .persoo-autocompleteDataset__footer.persoo-autocompleteDataset-1__footer {
     display: flex;
@@ -396,5 +397,18 @@ TODO use different desing on small screens. List products one below the other wi
     text-transform: uppercase;
     color: #C8AF6C;
     font-weight: 600;
+
+}
+
+@media (min-width: 381px) {
+    .persoo-autocompleteDataset__items__item.persoo-autocompleteDataset-1__items__item {
+        display: flex;
+        flex-wrap: wrap;
+        width: 50%;
+    }
+
+    .persoo-autocompleteDataset-1__items__item a {
+        width: 100%;
+    }
 
 }
