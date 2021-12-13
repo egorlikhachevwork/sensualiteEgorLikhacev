@@ -1,0 +1,1371 @@
+[
+    {
+        "defaultValue": "/searchResults?q=$query",
+        "group": "options",
+        "id": "searchLink",
+        "name": "Search Link where to send search request (with $query)",
+        "type": "text"
+    },
+    {
+        "defaultValue": 2,
+        "group": "options",
+        "id": "datasetsCount",
+        "name": "Suggested Result Sets",
+        "options": [
+            {
+                "label": "1 Result Set - Products only",
+                "value": 1
+            },
+            {
+                "label": "2 Result Sets - Products and Queries/Categories/Brands/Ads",
+                "value": 2
+            },
+            {
+                "label": "3 Result Sets - Products and Queries/Categories/Brands/Ads",
+                "value": 3
+            },
+            {
+                "label": "4 Result Sets - Products and Queries/Categories/Brands/Ads",
+                "value": 4
+            },
+            {
+                "label": "5 Result Sets - Products and Queries/Categories/Brands/Ads",
+                "value": 5
+            },
+            {
+                "label": "6 Result Sets - Products and Queries/Categories/Brands/Ads",
+                "value": 6
+            }
+        ],
+        "type": "select"
+    },
+    {
+        "condition": {
+            "fieldID": "hidden",
+            "fieldValue": "true",
+            "operator": "=="
+        },
+        "defaultValue": 1,
+        "group": "options",
+        "id": "minChars",
+        "name": "Minimum Characters in Query to display autocomplete",
+        "type": "number"
+    },
+    {
+        "condition": {
+            "fieldID": "hidden",
+            "fieldValue": "true",
+            "operator": "=="
+        },
+        "defaultValue": 200,
+        "group": "options",
+        "id": "requestThrottlingInMs",
+        "name": "Request Throttling in ms",
+        "type": "number"
+    },
+    {
+        "defaultValue": true,
+        "group": "options",
+        "id": "openOnFocus",
+        "name": "Open On Focus",
+        "type": "checkbox"
+    },
+    {
+        "defaultValue": true,
+        "group": "options",
+        "id": "closeOnBlur",
+        "name": "Close On Blur (false is useful for debug)",
+        "type": "checkbox"
+    },
+    {
+        "defaultValue": false,
+        "group": "options",
+        "id": "customOnSubmitWaitForData",
+        "name": "onSubmit - wait for suggested data for final query before calling onSubmit javascript",
+        "type": "checkbox"
+    },
+    {
+        "defaultValue": true,
+        "group": "options",
+        "id": "datasets2IsOn",
+        "name": "Show datasets 2",
+        "type": "checkbox"
+    },
+    {
+        "defaultValue": true,
+        "group": "options",
+        "id": "datasets3IsOn",
+        "name": "Show datasets 3",
+        "type": "checkbox"
+    },
+    {
+        "defaultValue": true,
+        "group": "options",
+        "id": "datasets4IsOn",
+        "name": "Show datasets 4",
+        "type": "checkbox"
+    },
+    {
+        "defaultValue": true,
+        "group": "options",
+        "id": "datasets5IsOn",
+        "name": "Show datasets 5",
+        "type": "checkbox"
+    },
+    {
+        "defaultValue": true,
+        "group": "options",
+        "id": "datasets6IsOn",
+        "name": "Show datasets 6",
+        "type": "checkbox"
+    },
+    {
+        "defaultValue": "function onSubmit(targetLink,datasetsState){\n // possible redirects\n    if (query.trim() === '') {\n        return '#';\n    }\n return targetLink;\n}",
+        "group": "options",
+        "id": "customOnSubmit",
+        "name": "onSubmit javascript (when search button clicked)",
+        "type": "javascript"
+    },
+    {
+        "defaultValue": "function onQueryChanged(state) {\n    /* console.log(JSON.stringify(state)); */\n}",
+        "group": "options",
+        "id": "customOnQueryChanged",
+        "name": "onQueryChanged javascript (when search query edited)",
+        "type": "javascript"
+    },
+    {
+        "defaultValue": "function onSelect(state) {\n    /* console.log(JSON.stringify(state)); */\n}",
+        "group": "options",
+        "id": "customOnSelect",
+        "name": "onSelect javascript (when suggested item selected)",
+        "type": "javascript"
+    },
+    {
+        "defaultValue": "function onRender(state) {\n    /* console.log(JSON.stringify(state)); */\n}",
+        "group": "options",
+        "id": "customOnRender",
+        "name": "onRender javascript",
+        "type": "javascript"
+    },
+    {
+        "condition": {
+            "fieldID": "datasetsCount",
+            "fieldValue": 1,
+            "operator": ">="
+        },
+        "defaultValue": "persooProductsFulltextSearch",
+        "group": "dataset1",
+        "id": "dataset1Algorithm",
+        "name": "Persoo algorithm ID",
+        "type": "text"
+    },
+    {
+        "condition": {
+            "fieldID": "datasetsCount",
+            "fieldValue": 1,
+            "operator": ">="
+        },
+        "defaultValue": 5,
+        "group": "dataset1",
+        "id": "dataset1MaxResultsCount",
+        "name": "Max Results Count",
+        "type": "number"
+    },
+    {
+        "condition": {
+            "fieldID": "datasetsCount",
+            "fieldValue": 1,
+            "operator": ">="
+        },
+        "defaultValue": "",
+        "group": "dataset1",
+        "id": "dataset1Group",
+        "name": "Group Container ID (or leave empty for no container)",
+        "type": "text"
+    },
+    {
+        "group": "dataset1",
+        "id": "section_templates_dataset1",
+        "name": "Templates",
+        "type": "section"
+    },
+    {
+        "condition": {
+            "fieldID": "datasetsCount",
+            "fieldValue": 1,
+            "operator": ">="
+        },
+        "defaultValue": "",
+        "group": "dataset1",
+        "id": "dataset1HeaderTemplate",
+        "name": "Header (available variables: query, count, isEmpty)",
+        "type": "text"
+    },
+    {
+        "condition": {
+            "fieldID": "datasetsCount",
+            "fieldValue": 1,
+            "operator": ">="
+        },
+        "defaultValue": "<%\n  function truncate(string, length) {\n    length = length === undefined ? 55 : length;\n    if (string.length <= length) return string;\n    return string.slice(0, length - 3) + '...';\n  }\n%>\n\n<a href=\"<%= item.link %>\">\n  <div class=\"persoo-autocompleteDataset__items__item__img-container\">\n    <img class=\"persoo-autocompleteDataset__items__item__img\"\n       src=\"<%= item.imageLink %>\"\n       alt=\"<%= item.title %>\"\n    />\n  </div>\n  \n  <div class=\"persoo-autocompleteDataset__items__item__content\">\n    <div class=\"persoo-autocompleteDataset__items__item__title\">\n      <%= highlightQuery(truncate(item.title)) %>\n   \t</div>\n    <div class=\"persoo-autocompleteDataset__items__item__price\">\n      <span class=\"persoo-autocompleteDataset__items__item__price__current\">\n        <%= item.price %>&nbsp;Kč\n      </span>\n      <% if (item.priceOriginal && item.price !== item.priceOriginal) { %>\n        <span class=\"persoo-autocompleteDataset__items__item__price__original\">\n          <%= item.priceOriginal %>&nbsp;Kč\n        </span>\n      <% } %> \n    </div>\n  </div>\n</a>",
+        "group": "dataset1",
+        "id": "dataset1ItemTemplate",
+        "name": "Item (available variables: query, item, highlightQuery(str))",
+        "type": "html"
+    },
+    {
+        "condition": {
+            "fieldID": "datasetsCount",
+            "fieldValue": 1,
+            "operator": ">="
+        },
+        "defaultValue": "Found <%= count %> products matching '<%= query %>'",
+        "group": "dataset1",
+        "id": "dataset1FooterTemplate",
+        "name": "Footer (available variables: query, count, isEmpty)",
+        "type": "text"
+    },
+    {
+        "condition": {
+            "fieldID": "datasetsCount",
+            "fieldValue": 1,
+            "operator": ">="
+        },
+        "defaultValue": true,
+        "group": "dataset1",
+        "id": "dataset1ShowWhenEmptyResults",
+        "name": "Show Nothing Found Message",
+        "type": "checkbox"
+    },
+    {
+        "condition": {
+            "children": [
+                {
+                    "fieldID": "datasetsCount",
+                    "fieldValue": 1,
+                    "operator": ">="
+                },
+                {
+                    "fieldID": "dataset1ShowWhenEmptyResults",
+                    "fieldValue": true,
+                    "operator": "=="
+                }
+            ],
+            "operator": "and"
+        },
+        "defaultValue": "",
+        "group": "dataset1",
+        "id": "dataset1EmptyTemplate",
+        "name": "Nothing Found Message (available variables: query)",
+        "type": "text"
+    },
+    {
+        "condition": {
+            "children": [
+                {
+                    "fieldID": "datasetsCount",
+                    "fieldValue": 2,
+                    "operator": ">="
+                },
+                {
+                    "fieldID": "datasets2IsOn",
+                    "fieldValue": true,
+                    "operator": "=="
+                }
+            ],
+            "operator": "and"
+        },
+        "defaultValue": "persooProductsFulltextSearch",
+        "group": "dataset2",
+        "id": "dataset2Algorithm",
+        "name": "Persoo algorithm ID",
+        "type": "text"
+    },
+    {
+        "condition": {
+            "children": [
+                {
+                    "fieldID": "datasetsCount",
+                    "fieldValue": 2,
+                    "operator": ">="
+                },
+                {
+                    "fieldID": "datasets2IsOn",
+                    "fieldValue": true,
+                    "operator": "=="
+                }
+            ],
+            "operator": "and"
+        },
+        "defaultValue": 3,
+        "group": "dataset2",
+        "id": "dataset2MaxResultsCount",
+        "name": "Maximum Results Count",
+        "type": "number"
+    },
+    {
+        "condition": {
+            "children": [
+                {
+                    "fieldID": "datasetsCount",
+                    "fieldValue": 2,
+                    "operator": ">="
+                },
+                {
+                    "fieldID": "datasets2IsOn",
+                    "fieldValue": true,
+                    "operator": "=="
+                }
+            ],
+            "operator": "and"
+        },
+        "defaultValue": "",
+        "group": "dataset2",
+        "id": "dataset2Group",
+        "name": "Group Container ID (or leave empty for no container)",
+        "type": "text"
+    },
+    {
+        "condition": {
+            "children": [
+                {
+                    "fieldID": "datasetsCount",
+                    "fieldValue": 2,
+                    "operator": ">="
+                },
+                {
+                    "fieldID": "datasets2IsOn",
+                    "fieldValue": true,
+                    "operator": "=="
+                }
+            ],
+            "operator": "and"
+        },
+        "group": "dataset2",
+        "id": "section_templates_dataset2",
+        "name": "Templates",
+        "type": "section"
+    },
+    {
+        "condition": {
+            "children": [
+                {
+                    "fieldID": "datasetsCount",
+                    "fieldValue": 2,
+                    "operator": ">="
+                },
+                {
+                    "fieldID": "datasets2IsOn",
+                    "fieldValue": true,
+                    "operator": "=="
+                }
+            ],
+            "operator": "and"
+        },
+        "defaultValue": "",
+        "group": "dataset2",
+        "id": "dataset2HeaderTemplate",
+        "name": "Header (available variables: query, count, isEmpty)",
+        "type": "text"
+    },
+    {
+        "condition": {
+            "children": [
+                {
+                    "fieldID": "datasetsCount",
+                    "fieldValue": 2,
+                    "operator": ">="
+                },
+                {
+                    "fieldID": "datasets2IsOn",
+                    "fieldValue": true,
+                    "operator": "=="
+                }
+            ],
+            "operator": "and"
+        },
+        "defaultValue": "<a href=\"<%= item.link %>\">\n  <span>\n    <%= item.title ? highlightQuery(item.title) : '' %>\n  <span>\n</a>",
+        "group": "dataset2",
+        "id": "dataset2ItemTemplate",
+        "name": "Item (available variables: query, item, highlightQuery(str))",
+        "type": "html"
+    },
+    {
+        "condition": {
+            "children": [
+                {
+                    "fieldID": "datasetsCount",
+                    "fieldValue": 2,
+                    "operator": ">="
+                },
+                {
+                    "fieldID": "datasets2IsOn",
+                    "fieldValue": true,
+                    "operator": "=="
+                }
+            ],
+            "operator": "and"
+        },
+        "defaultValue": "",
+        "group": "dataset2",
+        "id": "dataset2FooterTemplate",
+        "name": "Footer (available variables: query, count, isEmpty)",
+        "type": "text"
+    },
+    {
+        "condition": {
+            "children": [
+                {
+                    "fieldID": "datasetsCount",
+                    "fieldValue": 2,
+                    "operator": ">="
+                },
+                {
+                    "fieldID": "datasets2IsOn",
+                    "fieldValue": true,
+                    "operator": "=="
+                }
+            ],
+            "operator": "and"
+        },
+        "defaultValue": false,
+        "group": "dataset2",
+        "id": "dataset2ShowWhenEmptyResults",
+        "name": "Show Nothing Found Message",
+        "type": "checkbox"
+    },
+    {
+        "condition": {
+            "children": [
+                {
+                    "fieldID": "datasetsCount",
+                    "fieldValue": 2,
+                    "operator": ">="
+                },
+                {
+                    "fieldID": "datasets2IsOn",
+                    "fieldValue": true,
+                    "operator": "=="
+                },
+                {
+                    "fieldID": "dataset2ShowWhenEmptyResults",
+                    "fieldValue": true,
+                    "operator": "=="
+                }
+            ],
+            "operator": "and"
+        },
+        "defaultValue": "",
+        "group": "dataset2",
+        "id": "dataset2EmptyTemplate",
+        "name": "Nothing Found Message (available variables: query)",
+        "type": "text"
+    },
+    {
+        "condition": {
+            "children": [
+                {
+                    "fieldID": "datasetsCount",
+                    "fieldValue": 3,
+                    "operator": ">="
+                },
+                {
+                    "fieldID": "datasets3IsOn",
+                    "fieldValue": true,
+                    "operator": "=="
+                }
+            ],
+            "operator": "and"
+        },
+        "defaultValue": "persooProductsFulltextSearch",
+        "group": "dataset3",
+        "id": "dataset3Algorithm",
+        "name": "Persoo algorithm ID",
+        "type": "text"
+    },
+    {
+        "condition": {
+            "children": [
+                {
+                    "fieldID": "datasetsCount",
+                    "fieldValue": 3,
+                    "operator": ">="
+                },
+                {
+                    "fieldID": "datasets3IsOn",
+                    "fieldValue": true,
+                    "operator": "=="
+                }
+            ],
+            "operator": "and"
+        },
+        "defaultValue": 3,
+        "group": "dataset3",
+        "id": "dataset3MaxResultsCount",
+        "name": "Maximum Results Count",
+        "type": "number"
+    },
+    {
+        "condition": {
+            "children": [
+                {
+                    "fieldID": "datasetsCount",
+                    "fieldValue": 3,
+                    "operator": ">="
+                },
+                {
+                    "fieldID": "datasets3IsOn",
+                    "fieldValue": true,
+                    "operator": "=="
+                }
+            ],
+            "operator": "and"
+        },
+        "defaultValue": "",
+        "group": "dataset3",
+        "id": "dataset3Group",
+        "name": "Group Container ID (or leave empty for no container)",
+        "type": "text"
+    },
+    {
+        "condition": {
+            "children": [
+                {
+                    "fieldID": "datasetsCount",
+                    "fieldValue": 3,
+                    "operator": ">="
+                },
+                {
+                    "fieldID": "datasets3IsOn",
+                    "fieldValue": true,
+                    "operator": "=="
+                }
+            ],
+            "operator": "and"
+        },
+        "group": "dataset3",
+        "id": "section_templates_dataset3",
+        "name": "Templates",
+        "type": "section"
+    },
+    {
+        "condition": {
+            "children": [
+                {
+                    "fieldID": "datasetsCount",
+                    "fieldValue": 3,
+                    "operator": ">="
+                },
+                {
+                    "fieldID": "datasets3IsOn",
+                    "fieldValue": true,
+                    "operator": "=="
+                }
+            ],
+            "operator": "and"
+        },
+        "defaultValue": "",
+        "group": "dataset3",
+        "id": "dataset3HeaderTemplate",
+        "name": "Header (available variables: query, count, isEmpty)",
+        "type": "text"
+    },
+    {
+        "condition": {
+            "children": [
+                {
+                    "fieldID": "datasetsCount",
+                    "fieldValue": 3,
+                    "operator": ">="
+                },
+                {
+                    "fieldID": "datasets3IsOn",
+                    "fieldValue": true,
+                    "operator": "=="
+                }
+            ],
+            "operator": "and"
+        },
+        "defaultValue": "<a href=\"<%= item.link %>\">\n  <span>\n    <%= item.title ? highlightQuery(item.title) : '' %>\n  <span>\n</a>",
+        "group": "dataset3",
+        "id": "dataset3ItemTemplate",
+        "name": "Item (available variables: query, item, highlightQuery(str))",
+        "type": "html"
+    },
+    {
+        "condition": {
+            "children": [
+                {
+                    "fieldID": "datasetsCount",
+                    "fieldValue": 3,
+                    "operator": ">="
+                },
+                {
+                    "fieldID": "datasets3IsOn",
+                    "fieldValue": true,
+                    "operator": "=="
+                }
+            ],
+            "operator": "and"
+        },
+        "defaultValue": "",
+        "group": "dataset3",
+        "id": "dataset3FooterTemplate",
+        "name": "Footer (available variables: query, count, isEmpty)",
+        "type": "text"
+    },
+    {
+        "condition": {
+            "children": [
+                {
+                    "fieldID": "datasetsCount",
+                    "fieldValue": 3,
+                    "operator": ">="
+                },
+                {
+                    "fieldID": "datasets3IsOn",
+                    "fieldValue": true,
+                    "operator": "=="
+                }
+            ],
+            "operator": "and"
+        },
+        "defaultValue": false,
+        "group": "dataset3",
+        "id": "dataset3ShowWhenEmptyResults",
+        "name": "Show Nothing Found Message",
+        "type": "checkbox"
+    },
+    {
+        "condition": {
+            "children": [
+                {
+                    "fieldID": "datasetsCount",
+                    "fieldValue": 3,
+                    "operator": ">="
+                },
+                {
+                    "fieldID": "dataset3ShowWhenEmptyResults",
+                    "fieldValue": true,
+                    "operator": "=="
+                },
+                {
+                    "fieldID": "datasets3IsOn",
+                    "fieldValue": true,
+                    "operator": "=="
+                }
+            ],
+            "operator": "and"
+        },
+        "defaultValue": "",
+        "group": "dataset3",
+        "id": "dataset3EmptyTemplate",
+        "name": "Nothing Found Message (available variables: query)",
+        "type": "text"
+    },
+    {
+        "condition": {
+            "children": [
+                {
+                    "fieldID": "datasetsCount",
+                    "fieldValue": 4,
+                    "operator": ">="
+                },
+                {
+                    "fieldID": "datasets4IsOn",
+                    "fieldValue": true,
+                    "operator": "=="
+                }
+            ],
+            "operator": "and"
+        },
+        "defaultValue": "persooProductsFulltextSearch",
+        "group": "dataset4",
+        "id": "dataset4Algorithm",
+        "name": "Persoo algorithm ID",
+        "type": "text"
+    },
+    {
+        "condition": {
+            "children": [
+                {
+                    "fieldID": "datasetsCount",
+                    "fieldValue": 4,
+                    "operator": ">="
+                },
+                {
+                    "fieldID": "datasets4IsOn",
+                    "fieldValue": true,
+                    "operator": "=="
+                }
+            ],
+            "operator": "and"
+        },
+        "defaultValue": 3,
+        "group": "dataset4",
+        "id": "dataset4MaxResultsCount",
+        "name": "Maximum Results Count",
+        "type": "number"
+    },
+    {
+        "condition": {
+            "children": [
+                {
+                    "fieldID": "datasetsCount",
+                    "fieldValue": 4,
+                    "operator": ">="
+                },
+                {
+                    "fieldID": "datasets4IsOn",
+                    "fieldValue": true,
+                    "operator": "=="
+                }
+            ],
+            "operator": "and"
+        },
+        "defaultValue": "",
+        "group": "dataset4",
+        "id": "dataset4Group",
+        "name": "Group Container ID (or leave empty for no container)",
+        "type": "text"
+    },
+    {
+        "condition": {
+            "children": [
+                {
+                    "fieldID": "datasetsCount",
+                    "fieldValue": 4,
+                    "operator": ">="
+                },
+                {
+                    "fieldID": "datasets4IsOn",
+                    "fieldValue": true,
+                    "operator": "=="
+                }
+            ],
+            "operator": "and"
+        },
+        "group": "dataset4",
+        "id": "section_templates_dataset4",
+        "name": "Templates",
+        "type": "section"
+    },
+    {
+        "condition": {
+            "children": [
+                {
+                    "fieldID": "datasetsCount",
+                    "fieldValue": 4,
+                    "operator": ">="
+                },
+                {
+                    "fieldID": "datasets4IsOn",
+                    "fieldValue": true,
+                    "operator": "=="
+                }
+            ],
+            "operator": "and"
+        },
+        "defaultValue": "",
+        "group": "dataset4",
+        "id": "dataset4HeaderTemplate",
+        "name": "Header (available variables: query, count, isEmpty)",
+        "type": "text"
+    },
+    {
+        "condition": {
+            "children": [
+                {
+                    "fieldID": "datasetsCount",
+                    "fieldValue": 4,
+                    "operator": ">="
+                },
+                {
+                    "fieldID": "datasets4IsOn",
+                    "fieldValue": true,
+                    "operator": "=="
+                }
+            ],
+            "operator": "and"
+        },
+        "defaultValue": "<a href=\"<%= item.link %>\">\n  <span>\n    <%= item.title ? highlightQuery(item.title) : '' %>\n  <span>\n</a>",
+        "group": "dataset4",
+        "id": "dataset4ItemTemplate",
+        "name": "Item (available variables: query, item, highlightQuery(str))",
+        "type": "html"
+    },
+    {
+        "condition": {
+            "children": [
+                {
+                    "fieldID": "datasetsCount",
+                    "fieldValue": 4,
+                    "operator": ">="
+                },
+                {
+                    "fieldID": "datasets4IsOn",
+                    "fieldValue": true,
+                    "operator": "=="
+                }
+            ],
+            "operator": "and"
+        },
+        "defaultValue": "",
+        "group": "dataset4",
+        "id": "dataset4FooterTemplate",
+        "name": "Footer (available variables: query, count, isEmpty)",
+        "type": "text"
+    },
+    {
+        "condition": {
+            "children": [
+                {
+                    "fieldID": "datasetsCount",
+                    "fieldValue": 4,
+                    "operator": ">="
+                },
+                {
+                    "fieldID": "datasets4IsOn",
+                    "fieldValue": true,
+                    "operator": "=="
+                }
+            ],
+            "operator": "and"
+        },
+        "defaultValue": false,
+        "group": "dataset4",
+        "id": "dataset4ShowWhenEmptyResults",
+        "name": "Show Nothing Found Message",
+        "type": "checkbox"
+    },
+    {
+        "condition": {
+            "children": [
+                {
+                    "fieldID": "datasetsCount",
+                    "fieldValue": 4,
+                    "operator": ">="
+                },
+                {
+                    "fieldID": "datasets4IsOn",
+                    "fieldValue": true,
+                    "operator": "=="
+                },
+                {
+                    "fieldID": "dataset4ShowWhenEmptyResults",
+                    "fieldValue": true,
+                    "operator": "=="
+                }
+            ],
+            "operator": "and"
+        },
+        "defaultValue": "",
+        "group": "dataset4",
+        "id": "dataset4EmptyTemplate",
+        "name": "Nothing Found Message (available variables: query)",
+        "type": "text"
+    },
+    {
+        "condition": {
+            "children": [
+                {
+                    "fieldID": "datasetsCount",
+                    "fieldValue": 5,
+                    "operator": ">="
+                },
+                {
+                    "fieldID": "datasets5IsOn",
+                    "fieldValue": true,
+                    "operator": "=="
+                }
+            ],
+            "operator": "and"
+        },
+        "defaultValue": "persooProductsFulltextSearch",
+        "group": "dataset5",
+        "id": "dataset5Algorithm",
+        "name": "Persoo algorithm ID",
+        "type": "text"
+    },
+    {
+        "condition": {
+            "children": [
+                {
+                    "fieldID": "datasetsCount",
+                    "fieldValue": 5,
+                    "operator": ">="
+                },
+                {
+                    "fieldID": "datasets5IsOn",
+                    "fieldValue": true,
+                    "operator": "=="
+                }
+            ],
+            "operator": "and"
+        },
+        "defaultValue": 3,
+        "group": "dataset5",
+        "id": "dataset5MaxResultsCount",
+        "name": "Maximum Results Count",
+        "type": "number"
+    },
+    {
+        "condition": {
+            "children": [
+                {
+                    "fieldID": "datasetsCount",
+                    "fieldValue": 5,
+                    "operator": ">="
+                },
+                {
+                    "fieldID": "datasets5IsOn",
+                    "fieldValue": true,
+                    "operator": "=="
+                }
+            ],
+            "operator": "and"
+        },
+        "defaultValue": "",
+        "group": "dataset5",
+        "id": "dataset5Group",
+        "name": "Group Container ID (or leave empty for no container)",
+        "type": "text"
+    },
+    {
+        "condition": {
+            "children": [
+                {
+                    "fieldID": "datasetsCount",
+                    "fieldValue": 5,
+                    "operator": ">="
+                },
+                {
+                    "fieldID": "datasets5IsOn",
+                    "fieldValue": true,
+                    "operator": "=="
+                }
+            ],
+            "operator": "and"
+        },
+        "group": "dataset5",
+        "id": "section_templates_dataset5",
+        "name": "Templates",
+        "type": "section"
+    },
+    {
+        "condition": {
+            "children": [
+                {
+                    "fieldID": "datasetsCount",
+                    "fieldValue": 5,
+                    "operator": ">="
+                },
+                {
+                    "fieldID": "datasets5IsOn",
+                    "fieldValue": true,
+                    "operator": "=="
+                }
+            ],
+            "operator": "and"
+        },
+        "defaultValue": "",
+        "group": "dataset5",
+        "id": "dataset5HeaderTemplate",
+        "name": "Header (available variables: query, count, isEmpty)",
+        "type": "text"
+    },
+    {
+        "condition": {
+            "children": [
+                {
+                    "fieldID": "datasetsCount",
+                    "fieldValue": 5,
+                    "operator": ">="
+                },
+                {
+                    "fieldID": "datasets5IsOn",
+                    "fieldValue": true,
+                    "operator": "=="
+                }
+            ],
+            "operator": "and"
+        },
+        "defaultValue": "<a href=\"<%= item.link %>\">\n  <span>\n    <%= item.title ? highlightQuery(item.title) : '' %>\n  <span>\n</a>",
+        "group": "dataset5",
+        "id": "dataset5ItemTemplate",
+        "name": "Item (available variables: query, item, highlightQuery(str))",
+        "type": "html"
+    },
+    {
+        "condition": {
+            "children": [
+                {
+                    "fieldID": "datasetsCount",
+                    "fieldValue": 5,
+                    "operator": ">="
+                },
+                {
+                    "fieldID": "datasets5IsOn",
+                    "fieldValue": true,
+                    "operator": "=="
+                }
+            ],
+            "operator": "and"
+        },
+        "defaultValue": "",
+        "group": "dataset5",
+        "id": "dataset5FooterTemplate",
+        "name": "Footer (available variables: query, count, isEmpty)",
+        "type": "text"
+    },
+    {
+        "condition": {
+            "children": [
+                {
+                    "fieldID": "datasetsCount",
+                    "fieldValue": 5,
+                    "operator": ">="
+                },
+                {
+                    "fieldID": "datasets5IsOn",
+                    "fieldValue": true,
+                    "operator": "=="
+                }
+            ],
+            "operator": "and"
+        },
+        "defaultValue": false,
+        "group": "dataset5",
+        "id": "dataset5ShowWhenEmptyResults",
+        "name": "Show Nothing Found Message",
+        "type": "checkbox"
+    },
+    {
+        "condition": {
+            "children": [
+                {
+                    "fieldID": "datasetsCount",
+                    "fieldValue": 5,
+                    "operator": ">="
+                },
+                {
+                    "fieldID": "dataset5ShowWhenEmptyResults",
+                    "fieldValue": true,
+                    "operator": "=="
+                },
+                {
+                    "fieldID": "datasets5IsOn",
+                    "fieldValue": true,
+                    "operator": "=="
+                }
+            ],
+            "operator": "and"
+        },
+        "defaultValue": "",
+        "group": "dataset5",
+        "id": "dataset5EmptyTemplate",
+        "name": "Nothing Found Message (available variables: query)",
+        "type": "text"
+    },
+    {
+        "condition": {
+            "children": [
+                {
+                    "fieldID": "datasetsCount",
+                    "fieldValue": 6,
+                    "operator": ">="
+                },
+                {
+                    "fieldID": "datasets6IsOn",
+                    "fieldValue": true,
+                    "operator": "=="
+                }
+            ],
+            "operator": "and"
+        },
+        "defaultValue": "persooProductsFulltextSearch",
+        "group": "dataset6",
+        "id": "dataset6Algorithm",
+        "name": "Persoo algorithm ID",
+        "type": "text"
+    },
+    {
+        "condition": {
+            "children": [
+                {
+                    "fieldID": "datasetsCount",
+                    "fieldValue": 6,
+                    "operator": ">="
+                },
+                {
+                    "fieldID": "datasets6IsOn",
+                    "fieldValue": true,
+                    "operator": "=="
+                }
+            ],
+            "operator": "and"
+        },
+        "defaultValue": 3,
+        "group": "dataset6",
+        "id": "dataset6MaxResultsCount",
+        "name": "Maximum Results Count",
+        "type": "number"
+    },
+    {
+        "condition": {
+            "children": [
+                {
+                    "fieldID": "datasetsCount",
+                    "fieldValue": 6,
+                    "operator": ">="
+                },
+                {
+                    "fieldID": "datasets6IsOn",
+                    "fieldValue": true,
+                    "operator": "=="
+                }
+            ],
+            "operator": "and"
+        },
+        "defaultValue": "",
+        "group": "dataset6",
+        "id": "dataset6Group",
+        "name": "Group Container ID (or leave empty for no container)",
+        "type": "text"
+    },
+    {
+        "condition": {
+            "children": [
+                {
+                    "fieldID": "datasetsCount",
+                    "fieldValue": 6,
+                    "operator": ">="
+                },
+                {
+                    "fieldID": "datasets6IsOn",
+                    "fieldValue": true,
+                    "operator": "=="
+                }
+            ],
+            "operator": "and"
+        },
+        "group": "dataset6",
+        "id": "section_templates_dataset6",
+        "name": "Templates",
+        "type": "section"
+    },
+    {
+        "condition": {
+            "children": [
+                {
+                    "fieldID": "datasetsCount",
+                    "fieldValue": 6,
+                    "operator": ">="
+                },
+                {
+                    "fieldID": "datasets6IsOn",
+                    "fieldValue": true,
+                    "operator": "=="
+                }
+            ],
+            "operator": "and"
+        },
+        "defaultValue": "",
+        "group": "dataset6",
+        "id": "dataset6HeaderTemplate",
+        "name": "Header (available variables: query, count, isEmpty)",
+        "type": "text"
+    },
+    {
+        "condition": {
+            "children": [
+                {
+                    "fieldID": "datasetsCount",
+                    "fieldValue": 6,
+                    "operator": ">="
+                },
+                {
+                    "fieldID": "datasets6IsOn",
+                    "fieldValue": true,
+                    "operator": "=="
+                }
+            ],
+            "operator": "and"
+        },
+        "defaultValue": "<a href=\"<%= item.link %>\">\n  <span>\n    <%= item.title ? highlightQuery(item.title) : '' %>\n  <span>\n</a>",
+        "group": "dataset6",
+        "id": "dataset6ItemTemplate",
+        "name": "Item (available variables: query, item, highlightQuery(str))",
+        "type": "html"
+    },
+    {
+        "condition": {
+            "children": [
+                {
+                    "fieldID": "datasetsCount",
+                    "fieldValue": 6,
+                    "operator": ">="
+                },
+                {
+                    "fieldID": "datasets6IsOn",
+                    "fieldValue": true,
+                    "operator": "=="
+                }
+            ],
+            "operator": "and"
+        },
+        "defaultValue": "",
+        "group": "dataset6",
+        "id": "dataset6FooterTemplate",
+        "name": "Footer (available variables: query, count, isEmpty)",
+        "type": "text"
+    },
+    {
+        "condition": {
+            "children": [
+                {
+                    "fieldID": "datasetsCount",
+                    "fieldValue": 6,
+                    "operator": ">="
+                },
+                {
+                    "fieldID": "datasets6IsOn",
+                    "fieldValue": true,
+                    "operator": "=="
+                }
+            ],
+            "operator": "and"
+        },
+        "defaultValue": false,
+        "group": "dataset6",
+        "id": "dataset6ShowWhenEmptyResults",
+        "name": "Show Nothing Found Message",
+        "type": "checkbox"
+    },
+    {
+        "condition": {
+            "children": [
+                {
+                    "fieldID": "datasetsCount",
+                    "fieldValue": 6,
+                    "operator": ">="
+                },
+                {
+                    "fieldID": "dataset6ShowWhenEmptyResults",
+                    "fieldValue": true,
+                    "operator": "=="
+                },
+                {
+                    "fieldID": "datasets6IsOn",
+                    "fieldValue": true,
+                    "operator": "=="
+                }
+            ],
+            "operator": "and"
+        },
+        "defaultValue": "",
+        "group": "dataset6",
+        "id": "dataset6EmptyTemplate",
+        "name": "Nothing Found Message (available variables: query)",
+        "type": "text"
+    },
+    {
+        "defaultValue": false,
+        "group": "noresults",
+        "id": "showNoResultsMessage",
+        "name": "Show No Results Message",
+        "type": "checkbox"
+    },
+    {
+        "defaultValue": "No results found.",
+        "group": "noresults",
+        "id": "noResultsTemplate",
+        "name": "No Results Template",
+        "type": "html"
+    },
+    {
+        "defaultValue": "<!-- \n    Elements with following classes are required:\n      .persoo-ac-search-bar__form \n      .persoo-ac-search-bar__input\n      .persoo-ac-search-bar__dropdown\n    Delete placeholder rotation data attributes to deactivate placeholder rotation.\n-->\n<div class=\"persoo-ac-search-bar\">\n\n  <form class=\"persoo-ac-search-bar__form\"\n        accept-charset=\"utf-8\"\n        role=\"search\">\n      <input type=\"text\"\n             class=\"persoo-ac-search-bar__input\"\n             value=\"\" name=\"query\"\n             placeholder=\"Search for ...\"\n             data-placeholders-to-rotate='[\"Search for ...\", \"Stores\", \"iPhone\"]'\n             data-placeholders-rotation-period=\"4000\"\n             autocomplete=\"off\">\n      <input type=\"submit\"\n             class=\"persoo-ac-search-bar__submit\"\n             value=\"Search\">\n  </form>\n\n  <div class=\"persoo-ac-search-bar__dropdown\"></div>\n\n</div>",
+        "group": "design",
+        "id": "searchBarTemplate",
+        "name": "Search Bar Template as HTML",
+        "type": "html"
+    },
+    {
+        "defaultValue": "/* Customize default CSS rules to get what you need\nor delete them all and add them to your global CSS */\n\n/* Search Bar with Autocomplete (and input element) */\n.persoo-ac-search-bar,\n.persoo-ac-search-bar * {\n  box-sizing: border-box;\n  font-family: inherit;\n  text-rendering: optimizeLegibility;\n  text-rendering: geometricPrecision;\n  font-smooth: always;\n  font-smoothing: antialiased;\n  -moz-font-smoothing: antialiased;\n  -webkit-font-smoothing: antialiased;\n  -webkit-font-smoothing: subpixel-antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n.persoo-ac-search-bar {\n  position: relative;\n  /* set width you need or 'auto' */\n  min-width: 200px;\n  max-width: 500px;\n}\n.persoo-ac-search-bar__form {\n  display: flex;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  height: 48px;\n}\n.persoo-ac-search-bar__input,\n.persoo-ac-search-bar__submit {\n    height: 48px;\n    margin: 0;\n}\n.persoo-ac-search-bar__input {\n  flex: 1 1 auto;\n  -webkit-flex: 1 1 auto;\n  -ms-flex: 1 1 auto;\n  width: 100%;\n  font-size: 16px;\n  background: #fff;\n  color: #111;\n  outline: 0;\n  box-shadow: none;\n  padding-left: 24px;\n  border-radius: 0;\n  overflow: hidden;\n  border: 1px solid #CCC;\n  border-right: 0;\n}\n.persoo-ac-search-bar__input::-ms-clear {\n    display: none;\n}\n.persoo-ac-search-bar__submit {\n  width: 48px;\n  overflow: hidden;\n  cursor: pointer;\n  border-radius: 0;\n  border: none;\n  background-color: #555;\n  /* change color and size in decoded SVG. Note: svg must be encoded because of IE. */\n  background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%2740%27%20height%3D%2740%27%20style%3D%27fill%3Awhite%3B%20stroke%3Anone%27%3E%3Cpath%20d%3D%27M15.553%2031.107c8.59%200%2015.554-6.964%2015.554-15.554S24.143%200%2015.553%200%200%206.964%200%2015.553c0%208.59%206.964%2015.554%2015.553%2015.554zm0-3.888c6.443%200%2011.666-5.225%2011.666-11.668%200-6.442-5.225-11.665-11.668-11.665-6.442%200-11.665%205.223-11.665%2011.665%200%206.443%205.223%2011.666%2011.665%2011.666zm12.21%203.84a2.005%202.005%200%200%201%20.002-2.833l.463-.463a2.008%202.008%200%200%201%202.833-.003l8.17%208.168c.78.78.78%202.05-.004%202.833l-.462.463a2.008%202.008%200%200%201-2.834.004l-8.168-8.17z%27%20fill%3D%27%23fff%27%20fill-rule%3D%27evenodd%27%2F%3E%3C%2Fsvg%3E\");\n  background-size: 16px 16px;\n  background-position: center;\n  background-repeat: no-repeat;\n  text-indent: -500px;\n}\n.persoo-ac-search-bar__submit:hover,\n.persoo-ac-search-bar__submit:focus {\n  background-color: #333;\n}\n.persoo-ac-search-bar__form--visible .persoo-ac-search-bar__input {\n    border-radius: 0;\n}\n.persoo-ac-search-bar__form--visible .persoo-ac-search-bar__submit {\n    border-radius: 0;\n}\n/* Autocomplete Dropdown */\n.persoo-ac-search-bar__dropdown {\n  /* Dropdown's offset from input bottom left corner. Margin is counted inside absolutely positioned box. */\n  display: none;\n  margin-left: 0;\n  position: absolute;\n  width: auto;\n  min-width: 100%;\n  top: 100%;\n  left: 0;\n  display: flex;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  flex-direction: column;\n  -webkit-directiom: column;\n  -ms-directiom: column;\n  z-index: 9999;\n  font-size: 14px;\n}\n/* Note on responsivity:\nTODO use different desing on small screens. List products one below the other with large images on the right\n*/\n@media (min-width: 361px) {\n  .persoo-ac-search-bar__dropdown {\n    display: block;\n  }\n}\n.persoo-autocompleteDropdown__root {\n  position: static !important; /* FIXME - remove */\n}\n\n/* Dataset styles */\n.persoo-autocompleteDataset__root:not(:first-child){\n  border-top: 1px solid #CCC;\n}\n.persoo-autocompleteDataset__root > div {\n  border: 1px solid #CCC;\n}\n.persoo-autocompleteDataset__root > div:first-child {\n  border-top: 0;\n}\n.persoo-autocompleteDataset__root > div:not(:last-child),\n.persoo-autocompleteDataset__root:not(:last-child) > div:last-child {\n  border-bottom: 0;\n}\n.persoo-autocompleteDataset__root:last-child > div:last-child {\n  border-radius: 0;\n}\n.persoo-autocompleteDataset__header,\n.persoo-autocompleteDataset__footer {\n  display: flex;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  height: 48px;\n  align-items: center;\n  -webkit-align-items: center;\n  -ms-flex-align: center;\n  justify-content: center;\n  -webkit-justify-content: center;\n  -ms-flex-pack: center;\n  background: #f3f3f3;\n}\n.persoo-autocompleteDataset__header {\n  font-weight: bold;\n}\n.persoo-autocompleteDataset__empty {\n padding: 8px 24px;\n background: #fff;\n}\n.persoo-autocompleteDataset__items {\n  padding: 1px 16px;\n  background: #FFF;\n}\n.persoo-autocompleteDataset__items:empty {\n  display: none; /* FIXME - remove empty div from DOM */\n}\n.persoo-autocompleteDataset__items__item {\n  cursor: pointer;\n  border-bottom: 1px solid #CCC;\n}\n.persoo-autocompleteDataset__items__item:last-child {\n  border-bottom: 0;\n}\n.persoo-autocompleteDataset__items__item,\n.persoo-autocompleteDataset__items__item a,\n.persoo-autocompleteDataset__items__item a:hover {\n  text-decoration: none;\n}\n.persoo-autocompleteDataset__items__item a {\n  display: flex;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  margin: -1px -17px;\n  align-items: center;\n  -webkit-align-items: center;\n  -ms-flex-align: center;\n  border: 2px solid rgba(0, 0, 0, 0);\n  color: #555;\n  padding: 8px 24px;\n}\n.persoo-autocompleteDataset__items__item a:hover,\n.persoo-autocompleteDataset__items__item.persoo-selected a {\n  border-color: rgba(0, 0, 0, 0.6);\n  color: #111;\n}\n.persoo-autocompleteDataset__items__item__img-container {\n  width: 100px;\n  height: 100px;\n  flex-shrink: 0;\n  margin: 8px 0;\n  position: relative;\n}\n.persoo-autocompleteDataset__items__item__img {\n  width: auto;\n  height: auto;\n  max-width: 100%;\n  max-height: 100%;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  -webkit-transform: translate(-50%, -50%);\n}\n.persoo-autocompleteDataset__items__item__content {\n  flex: 1 1 auto;\n  -webkit-flex: 1 1 auto;\n  -ms-flex: 1 1 auto;\n  padding-left: 24px;\n}\n.persoo-autocompleteDataset__items__item__title {\n  font-size: 18px;\n  line-height: 32px;\n  margin-bottom: 8px;\n}\n.persoo-autocompleteDataset__items__item__price {\n  font-weight: bold;\n  color: #BD1E51;\n  font-size: 16px;\n}\n.persoo-autocompleteDataset__items__item__price__original {\n  text-decoration: line-through;\n  font-weight: normal;\n  color: #aaa;\n  margin-left: 8px;\n}\n",
+        "group": "design",
+        "id": "customCSS",
+        "name": "Custom CSS",
+        "type": "css"
+    },
+    {
+        "defaultValue": {
+            "dataset1": {
+                "empty": "",
+                "footer": "",
+                "header": "",
+                "item": "",
+                "items": "",
+                "root": ""
+            },
+            "dataset2": {
+                "empty": "",
+                "footer": "",
+                "header": "",
+                "item": "",
+                "items": "",
+                "root": ""
+            },
+            "dataset3": {
+                "empty": "",
+                "footer": "",
+                "header": "",
+                "item": "",
+                "items": "",
+                "root": ""
+            },
+            "dataset4": {
+                "empty": "",
+                "footer": "",
+                "header": "",
+                "item": "",
+                "items": "",
+                "root": ""
+            },
+            "dropdown": {
+                "root": ""
+            }
+        },
+        "group": "design",
+        "id": "customClassNamesJSON",
+        "name": "Custom Class Names",
+        "type": "json"
+    },
+    {
+        "defaultValue": "/* your own javascript */",
+        "group": "design",
+        "id": "customJS",
+        "name": "Custom Javascript",
+        "type": "javascript"
+    },
+    {
+        "defaultValue": "function push(state) {\n    // console.log('Virtual pageview for autocomplete dropdown, query=' + state.query);\n    // var firstDatasetResultsCount = state.datasets[0] ? state.datasets[0].itemsCount : 0;\n  \n    // Google Analytics\n    //var pageURL = '/search/autocomplete/?term=' + state.query + '&foundResultsCount=' + firstDatasetResultsCount;\n    // window.ga('set', 'page', pageURL);\n    // window.ga('send', 'pageView');\n  \n    // Google Analytics includend by GTM\n    // persoo.actions.googleAnalyticsTrackPageview(pageURL);\n\n    // GTM\n    // dataLayer.push({\n    //     'event': 'autocomplete',\n    //     'Search Query': state.query,\n    //     'Number of Hits': firstDatasetResultsCount\n    // });\n    \n    // any other analytics service\n}",
+        "group": "analytics",
+        "id": "analyticsPushFunction",
+        "name": "Push Function (called only when query had changed)",
+        "type": "javascript"
+    },
+    {
+        "defaultValue": true,
+        "group": "analytics",
+        "id": "analyticsTriggerOnUIInteraction",
+        "name": "Trigger Push Function on any click in autocomplete",
+        "type": "checkbox"
+    },
+    {
+        "defaultValue": 3000,
+        "group": "analytics",
+        "id": "analyticsTriggerDelay",
+        "name": "Delay in ms between last key stroke and following Push Function call",
+        "type": "number"
+    }
+]

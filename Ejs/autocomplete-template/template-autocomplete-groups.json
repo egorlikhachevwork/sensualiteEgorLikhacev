@@ -1,0 +1,42 @@
+[
+    {
+        "id": "dataset1",
+        "name": "Suggested Dataset 1 (Products)"
+    },
+    {
+        "id": "dataset2",
+        "name": "Suggested Dataset 2"
+    },
+    {
+        "id": "dataset3",
+        "name": "Suggested Dataset 3"
+    },
+    {
+        "id": "dataset4",
+        "name": "Suggested Dataset 4"
+    },
+    {
+        "id": "dataset5",
+        "name": "Suggested Dataset 5"
+    },
+    {
+        "id": "dataset6",
+        "name": "Suggested Dataset 6"
+    },
+    {
+        "id": "noresults",
+        "name": "No results found"
+    },
+    {
+        "id": "options",
+        "name": "Options"
+    },
+    {
+        "id": "design",
+        "name": "HTML & CSS Styles"
+    },
+    {
+        "id": "analytics",
+        "name": "Analytics"
+    }
+]

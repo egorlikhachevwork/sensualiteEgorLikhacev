@@ -1,0 +1,8 @@
+{
+  "data": {
+      "location": "autocomplete",
+      "name": "Search Box with Autocomplete"
+  },
+  "description": "Search Box with Autocomplete and Product Suggestions.",
+  "releaseStage": "production"
+}
