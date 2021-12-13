@@ -117,15 +117,16 @@ TODO use different desing on small screens. List products one below the other wi
 
 .persoo-autocompleteDropdown__root {
     position: static !important; /* FIXME - remove */
+    background-color: #ffffff;
 }
 
 /* Dataset styles */
 .persoo-autocompleteDataset__root:not(:first-child) {
-    border-top: 1px solid #CCC;
+    /*border-top: 1px solid #CCC;*/
 }
 
 .persoo-autocompleteDataset__root > div {
-    border: 1px solid #CCC;
+    /*border: 1px solid #CCC;*/
 }
 
 .persoo-autocompleteDataset__root > div:first-child {
@@ -141,8 +142,7 @@ TODO use different desing on small screens. List products one below the other wi
     border-radius: 0 0 4px 4px;
 }
 
-.persoo-autocompleteDataset__header,
-.persoo-autocompleteDataset__footer {
+.persoo-autocompleteDataset__header {
     display: flex;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -150,10 +150,9 @@ TODO use different desing on small screens. List products one below the other wi
     align-items: center;
     -webkit-align-items: center;
     -ms-flex-align: center;
-    justify-content: center;
-    -webkit-justify-content: center;
     -ms-flex-pack: center;
-    background: #f3f3f3;
+    /*background: #f3f3f3;*/
+    justify-content: flex-start;
 }
 
 .persoo-autocompleteDataset__header {
@@ -176,7 +175,7 @@ TODO use different desing on small screens. List products one below the other wi
 
 .persoo-autocompleteDataset__items__item {
     cursor: pointer;
-    border-bottom: 1px solid #CCC;
+    /*border-bottom: 1px solid #CCC;*/
 }
 
 .persoo-autocompleteDataset__items__item:last-child {
@@ -209,8 +208,8 @@ TODO use different desing on small screens. List products one below the other wi
 }
 
 .persoo-autocompleteDataset__items__item__img-container {
-    width: 100px;
-    height: 100px;
+    width: 287px;
+    height: 121px;
     flex-shrink: 0;
     margin: 8px 0;
     position: relative;
@@ -219,8 +218,8 @@ TODO use different desing on small screens. List products one below the other wi
 .persoo-autocompleteDataset__items__item__img {
     width: auto;
     height: auto;
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 100% !important;
+    max-height: 100% !important;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -236,15 +235,14 @@ TODO use different desing on small screens. List products one below the other wi
 }
 
 .persoo-autocompleteDataset__items__item__title {
-    font-size: 18px;
-    line-height: 32px;
-    margin-bottom: 8px;
-}
-
-.persoo-autocompleteDataset__items__item__price {
-    font-weight: bold;
-    color: #BD1E51;
-    font-size: 16px;
+    max-height: 32px;
+    overflow: hidden;
+    margin: 10px 0;
+    font-family: Mulish, sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 13px;
+    line-height: 16px;
 }
 
 .persoo-autocompleteDataset__items__item__price__original {
@@ -261,7 +259,11 @@ TODO use different desing on small screens. List products one below the other wi
 
 /*cat*/
 .persoo-autocompleteDataset-2__items__item a {
-
+    font-style: normal;
+    font-weight: 800;
+    font-size: 13px;
+    line-height: 16px;
+    color: #424360;
 }
 
 .persoo-autocompleteDataset__header.persoo-autocompleteDataset-2__header {
@@ -273,11 +275,27 @@ TODO use different desing on small screens. List products one below the other wi
     align-items: center;
     text-transform: uppercase;
     color: #C8AF6C;
+    padding: 0 24px;
+}
+
+.persoo-autocompleteDataset__header.persoo-autocompleteDataset-2__header .category__label {
+    font-weight: 400;
+    font-size: 14px;
+    padding-left: 2vw;
+}
+
+.persoo-autocompleteDataset__root.persoo-autocompleteDataset-2__root {
+    border-bottom: 1px solid rgba(66, 67, 96, 0.1);
+    padding-bottom: 10px;
 }
 
 /*clanky*/
 .persoo-autocompleteDataset-3__items__item a {
-
+    font-style: normal;
+    font-weight: 800;
+    font-size: 13px;
+    line-height: 16px;
+    color: #424360;
 }
 
 .persoo-autocompleteDataset__header.persoo-autocompleteDataset-3__header {
@@ -289,4 +307,94 @@ TODO use different desing on small screens. List products one below the other wi
     align-items: center;
     text-transform: uppercase;
     color: #C8AF6C;
+    padding: 0 24px;
+}
+
+.persoo-autocompleteDataset__header.persoo-autocompleteDataset-3__header .category__label {
+    font-weight: 400;
+    font-size: 14px;
+    padding-left: 2vw;
+}
+
+.persoo-autocompleteDataset__root.persoo-autocompleteDataset-3__root {
+    border-bottom: 1px solid rgba(66, 67, 96, 0.1);
+    padding-bottom: 10px;
+}
+
+
+/*product*/
+
+.persoo-autocompleteDataset-1__items__item a {
+
+}
+
+.persoo-autocompleteDataset__header.persoo-autocompleteDataset-1__header {
+    font-family: Mulish, sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 23px;
+    align-items: center;
+    text-transform: uppercase;
+    color: #C8AF6C;
+    padding: 0 24px;
+
+}
+
+.persoo-autocompleteDataset__header.persoo-autocompleteDataset-1__header .persoo__results-count {
+    font-weight: 400;
+    font-size: 14px;
+    padding-left: 2vw;
+}
+
+.persoo-autocompleteDataset__items.persoo-autocompleteDataset-1__items {
+    border-bottom: 1px solid rgba(66, 67, 96, 0.1) !important;
+    padding-bottom: 10px;
+}
+
+.persoo-autocompleteDataset__items__item__content {
+    text-align: center;
+
+}
+
+.persoo-autocompleteDataset__items__item__price {
+    text-align: center;
+    font-family: Mulish, sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 23px;
+    text-transform: uppercase;
+    color: #BEA152;
+}
+
+.persoo-autocompleteDataset__items__item__price__original {
+    font-family: Mulish, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 15px;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    color: rgba(66, 67, 96, 0.5);
+    padding-right: 20px;
+}
+
+/*btn*/
+.persoo-autocompleteDataset__footer.persoo-autocompleteDataset-1__footer {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    padding: 20px 10px;
+}
+
+.persoo-autocompleteDataset__footer.persoo-autocompleteDataset-1__footer a {
+    border: 1px solid #C8AF6C;
+    padding: 8px 12px;
+    text-transform: uppercase;
+    color: #C8AF6C;
+    font-weight: 600;
+
 }
