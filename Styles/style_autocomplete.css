@@ -16,11 +16,43 @@ or delete them all and add them to your global CSS */
     -moz-osx-font-smoothing: grayscale;
 }
 
+.persoo-autocompleteDataset__header.persoo-autocompleteDataset-1__header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.persoo-autocomplete-show-all--products {
+    border: 1px solid #C8AF6C;
+    padding: 8px 12px;
+    text-transform: uppercase;
+    color: #C8AF6C;
+    font-weight: 600;
+    /*display: flex;*/
+    font-family: Mulish, sans-serif;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 18px;
+    align-items: center;
+    text-align: right;
+    letter-spacing: 0.02em;
+    display: none;
+}
+
 .persoo-ac-search-bar {
     position: relative;
-    /* set width you need or 'auto' */
-    min-width: 200px;
-    max-width: 500px;
+
+}
+
+.persoo-ac-search-bar ::-webkit-scrollbar-thumb {
+    background: #C8AF6C;
+}
+
+.persoo-ac-search-bar ::-webkit-scrollbar {
+    width: 6px;
+}
+
+.persoo-ac-search-bar ::-webkit-scrollbar-track {
+    background: rgba(200, 175, 108, 0.5);
 }
 
 .persoo-ac-search-bar__form {
@@ -63,13 +95,13 @@ or delete them all and add them to your global CSS */
     cursor: pointer;
     border-radius: 0 4px 4px 0;
     border: none;
-    background-color: #555;
+    /*background-color: #555;*/
     /* change color and size in decoded SVG. Note: svg must be encoded because of IE. */
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%2740%27%20height%3D%2740%27%20style%3D%27fill%3Awhite%3B%20stroke%3Anone%27%3E%3Cpath%20d%3D%27M15.553%2031.107c8.59%200%2015.554-6.964%2015.554-15.554S24.143%200%2015.553%200%200%206.964%200%2015.553c0%208.59%206.964%2015.554%2015.553%2015.554zm0-3.888c6.443%200%2011.666-5.225%2011.666-11.668%200-6.442-5.225-11.665-11.668-11.665-6.442%200-11.665%205.223-11.665%2011.665%200%206.443%205.223%2011.666%2011.665%2011.666zm12.21%203.84a2.005%202.005%200%200%201%20.002-2.833l.463-.463a2.008%202.008%200%200%201%202.833-.003l8.17%208.168c.78.78.78%202.05-.004%202.833l-.462.463a2.008%202.008%200%200%201-2.834.004l-8.168-8.17z%27%20fill%3D%27%23fff%27%20fill-rule%3D%27evenodd%27%2F%3E%3C%2Fsvg%3E");
-    background-size: 16px 16px;
-    background-position: center;
-    background-repeat: no-repeat;
-    text-indent: -500px;
+    /*background-image: url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%2740%27%20height%3D%2740%27%20style%3D%27fill%3Awhite%3B%20stroke%3Anone%27%3E%3Cpath%20d%3D%27M15.553%2031.107c8.59%200%2015.554-6.964%2015.554-15.554S24.143%200%2015.553%200%200%206.964%200%2015.553c0%208.59%206.964%2015.554%2015.553%2015.554zm0-3.888c6.443%200%2011.666-5.225%2011.666-11.668%200-6.442-5.225-11.665-11.668-11.665-6.442%200-11.665%205.223-11.665%2011.665%200%206.443%205.223%2011.666%2011.665%2011.666zm12.21%203.84a2.005%202.005%200%200%201%20.002-2.833l.463-.463a2.008%202.008%200%200%201%202.833-.003l8.17%208.168c.78.78.78%202.05-.004%202.833l-.462.463a2.008%202.008%200%200%201-2.834.004l-8.168-8.17z%27%20fill%3D%27%23fff%27%20fill-rule%3D%27evenodd%27%2F%3E%3C%2Fsvg%3E");*/
+    /*background-size: 16px 16px;*/
+    /*background-position: center;*/
+    /*background-repeat: no-repeat;*/
+    /*text-indent: -500px;*/
 }
 
 .persoo-ac-search-bar__submit:hover,
@@ -78,11 +110,11 @@ or delete them all and add them to your global CSS */
 }
 
 .persoo-ac-search-bar__form--visible .persoo-ac-search-bar__input {
-    border-radius: 4px 0 0 0;
+    /*border-radius: 4px 0 0 0;*/
 }
 
 .persoo-ac-search-bar__form--visible .persoo-ac-search-bar__submit {
-    border-radius: 0 4px 0 0;
+    /*border-radius: 0 4px 0 0;*/
 }
 
 /* Autocomplete Dropdown */
@@ -118,6 +150,7 @@ TODO use different desing on small screens. List products one below the other wi
 .persoo-autocompleteDropdown__root {
     position: static !important; /* FIXME - remove */
     background-color: #ffffff;
+    overflow-x: hidden;
 }
 
 /* Dataset styles */
@@ -255,6 +288,7 @@ TODO use different desing on small screens. List products one below the other wi
 .persoo-autocompleteDataset-1__items__item a {
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 /*cat*/
@@ -281,7 +315,7 @@ TODO use different desing on small screens. List products one below the other wi
 .persoo-autocompleteDataset__header.persoo-autocompleteDataset-2__header .category__label {
     font-weight: 400;
     font-size: 14px;
-    padding-left: 2vw;
+    padding-left: 10px;
 }
 
 .persoo-autocompleteDataset__root.persoo-autocompleteDataset-2__root {
@@ -313,7 +347,7 @@ TODO use different desing on small screens. List products one below the other wi
 .persoo-autocompleteDataset__header.persoo-autocompleteDataset-3__header .category__label {
     font-weight: 400;
     font-size: 14px;
-    padding-left: 2vw;
+    padding-left: 10px;
 }
 
 .persoo-autocompleteDataset__root.persoo-autocompleteDataset-3__root {
@@ -324,9 +358,86 @@ TODO use different desing on small screens. List products one below the other wi
 
 /*product*/
 
-.persoo-autocompleteDataset-1__items__item a {
-
+.product-label-number {
+    font-weight: 400;
+    font-size: 14px;
+    padding-left: 10px;
 }
+
+.persoo-autocompleteDataset__items__item__labels {
+    position: absolute;
+    left: 0;
+    top: auto;
+}
+
+.new {
+    font-family: Mulish, sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 9px;
+    line-height: 11px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    background-color: #C8AF6C;
+    width: 75px;
+    justify-content: center;
+    height: 20px;
+    margin: 2px 10px;
+}
+
+.action {
+    font-family: Mulish, sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 9px;
+    line-height: 11px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    background-color: #C86C72;
+    width: 75px;
+    justify-content: center;
+    height: 20px;
+    margin: 2px 10px;
+}
+
+.limited {
+    font-weight: 800;
+    line-height: 11px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    width: 120px;
+    justify-content: center;
+    height: 20px;
+    font-family: 'profima-bold', sans-serif !important;
+    color: #5C5E7F !important;
+    background-color: white !important;
+    border: 1px solid #5C5E7F;
+    border-radius: 3px !important;
+    font-style: italic;
+    text-transform: none !important;
+    font-size: 13px !important;
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+    margin: 2px 10px;
+}
+
+.persoo-autocomplete-subtitle {
+    font-family: Mulish, sans-serif;
+    font-size: 11px;
+    line-height: 14px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #424360;
+    padding-top: 2px;
+}
+
 
 .persoo-autocompleteDataset__header.persoo-autocompleteDataset-1__header {
     font-family: Mulish, sans-serif;
@@ -344,7 +455,7 @@ TODO use different desing on small screens. List products one below the other wi
 .persoo-autocompleteDataset__header.persoo-autocompleteDataset-1__header .persoo__results-count {
     font-weight: 400;
     font-size: 14px;
-    padding-left: 2vw;
+    padding-left: 10px;
 }
 
 .persoo-autocompleteDataset__items.persoo-autocompleteDataset-1__items {
@@ -400,15 +511,255 @@ TODO use different desing on small screens. List products one below the other wi
 
 }
 
+
+/*search_bar*/
+.form textarea .form .select-selected {
+    color: #424360 !important;
+
+}
+
+.persoo-ac.persooAction.persooLocation {
+    width: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+    background-color: #c8af6c;
+    margin-top: 0;
+    border: 1px solid rgba(255, 255, 255, .1);
+}
+
+
+.persoo-ac-search-bar__input {
+    font-family: Mulish, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #424360 !important;
+    min-height: 46px;
+}
+
+.persoo-ac-search-bar__submit {
+    font-family: Mulish, sans-serif;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 12px !important;
+    line-height: 15px;
+    text-align: center !important;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #FFFFFF !important;
+    background-color: #424360 !important;
+    max-width: 140px;
+    max-height: 40px;
+    min-width: 140px;
+    min-height: 46px;
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+.searchbar-before-wrapper {
+    display: none;
+    max-width: 180px;
+    max-height: 45px;
+    font-family: Mulish, sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 23px;
+    align-items: center;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    align-self: stretch;
+    flex-grow: 0;
+    padding-right: 10px;
+}
+
+
+/*MEDIA*/
 @media (min-width: 381px) {
-    .persoo-autocompleteDataset__items__item.persoo-autocompleteDataset-1__items__item {
-        display: flex;
+    .persoo-autocompleteDataset__items.persoo-autocompleteDataset-1__items {
         flex-wrap: wrap;
+        display: flex;
+    }
+
+    .persoo-autocompleteDataset__items__item.persoo-autocompleteDataset-1__items__item {
+        /*display: flex;*/
+        /*flex-wrap: wrap;*/
         width: 50%;
     }
 
     .persoo-autocompleteDataset-1__items__item a {
         width: 100%;
     }
+
+}
+
+@media (min-width: 768px) {
+    .persoo-autocompleteDataset__items.persoo-autocompleteDataset-1__items {
+        flex-wrap: wrap;
+        display: flex;
+    }
+
+    .persoo-autocompleteDataset__items__item.persoo-autocompleteDataset-1__items__item {
+        /*display: flex;*/
+        /*flex-wrap: wrap;*/
+        width: 33%;
+    }
+
+    .persoo-autocompleteDataset-1__items__item a {
+        width: 100%;
+    }
+
+}
+
+@media (min-width: 992px) {
+    /*.persoo-autocompleteDropdown__column--right {*/
+    /*    max-height: 600px;*/
+    /*    overflow-x: hidden;*/
+    /*    overflow-y: auto;*/
+    /*    order: 2;*/
+    /*    width: 78%;*/
+    /*    padding-top: 10px;*/
+    /*}*/
+    /*.persoo-autocompleteDropdown__column--left {*/
+    /*    max-height: 600px;*/
+    /*    overflow-x: hidden;*/
+    /*    overflow-y: auto;*/
+    /*    order: 1;*/
+    /*    width: 22%;*/
+    /*    padding-top: 10px;*/
+    /*}*/
+    .persoo-autocompleteDropdown__root.persooAutocomplete.persooLocation.persooAction {
+        display: flex;
+    }
+
+    .persoo-autocompleteDataset__items.persoo-autocompleteDataset-1__items {
+        flex-wrap: wrap;
+        display: flex;
+    }
+
+    .persoo-autocompleteDataset__items__item.persoo-autocompleteDataset-1__items__item {
+        /*display: flex;*/
+        /*flex-wrap: wrap;*/
+        width: 33%;
+    }
+
+    .persoo-autocompleteDataset-1__items__item a {
+        width: 100%;
+    }
+
+    #persooAutocompleteDropdown {
+        display: flex;
+        flex-direction: row;
+        max-width: 1600px;
+        margin: 0 auto;
+    }
+
+    .persoo-autocompleteDropdown__column--right {
+        order: 2;
+        width: 78%;
+        padding-top: 10px;
+    }
+
+    .persoo-autocompleteDropdown__column--left {
+        order: 1;
+        width: 22%;
+        padding-top: 10px;
+    }
+
+    .persoo-autocomplete-show-all--products {
+        display: flex;
+    }
+
+    .persoo-autocompleteDataset__footer.persoo-autocompleteDataset-1__footer {
+        display: none;
+    }
+}
+
+@media (min-width: 1200px) {
+    .persoo-autocompleteDropdown__column--right {
+        max-height: 600px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        order: 2;
+        width: 78%;
+        padding-top: 10px;
+    }
+
+    .persoo-autocompleteDropdown__column--left {
+        max-height: 600px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        order: 1;
+        width: 22%;
+        padding-top: 10px;
+    }
+
+    .persoo-autocompleteDropdown__root.persooAutocomplete.persooLocation.persooAction {
+        display: flex;
+    }
+
+    .persoo-autocompleteDataset__items.persoo-autocompleteDataset-1__items {
+        flex-wrap: wrap;
+        display: flex;
+    }
+
+    .persoo-autocompleteDataset__items__item.persoo-autocompleteDataset-1__items__item {
+        /*display: flex;*/
+        /*flex-wrap: wrap;*/
+        width: 25%;
+    }
+
+    .persoo-autocompleteDataset-1__items__item a {
+        width: 100%;
+    }
+
+    #persooAutocompleteDropdown {
+        display: flex;
+        flex-direction: row;
+        max-width: 1600px;
+        margin: 0 auto;
+    }
+
+    .persoo-autocomplete-show-all--products {
+        display: flex;
+    }
+
+    .persoo-autocompleteDataset__footer.persoo-autocompleteDataset-1__footer {
+        display: none;
+    }
+
+    .persoo-ac-search-bar__dropdown {
+        height: auto !important;
+        min-width: 100%;
+        top: 125%;
+
+    }
+
+    .persoo-ac-search-bar__submit {
+        font-family: Mulish, sans-serif;
+        font-style: normal;
+        font-weight: 900;
+        font-size: 12px !important;
+        line-height: 15px;
+        text-align: center !important;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: #FFFFFF !important;
+        background-color: #424360 !important;
+        max-width: 140px;
+        max-height: 40px;
+        min-width: 140px;
+        min-height: 46px;
+        margin: 0 80px 0 12px;
+    }
+
+    .searchbar-before-wrapper {
+        display: flex;
+    }
+
 
 }
